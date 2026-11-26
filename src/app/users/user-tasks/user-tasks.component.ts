@@ -3,7 +3,7 @@ import {
   // computed,
   DestroyRef,
   inject,
-  // input,
+  input,
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute, RouterOutlet, RouterLink } from '@angular/router';
@@ -20,6 +20,7 @@ import { UsersService } from '../users.service';
 export class UserTasksComponent implements OnInit {
   // userId = input.required<string>();
   userName = '';
+  message = input.required<string>();
   private usersService = inject(UsersService);
   private activatedRoute = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
@@ -30,6 +31,7 @@ export class UserTasksComponent implements OnInit {
   // );
 
   ngOnInit() {
+    console.log('Input Data: ' + this.message());
     console.log(this.activatedRoute);
     const subscription = this.activatedRoute.paramMap.subscribe({
       next: (paramMap) =>
